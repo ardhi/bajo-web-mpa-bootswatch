@@ -4,19 +4,16 @@ const items = ['cerulean', 'cosmo', 'cyborg', 'darkly', 'flatly', 'journal',
   'united', 'vapor', 'yeti', 'zephyr']
 
 async function themes () {
-  const { importPkg, getConfig, readJson } = this.bajo.helper
+  const { importPkg } = this.bajo.helper
+  const { virtualsDir } = this.bajoWebStatic.helper
   const { map, upperFirst } = await importPkg('lodash-es')
-  const cfg = getConfig('bajoWebMpaBootswatch', { full: true })
-  const cfgBs = getConfig('bajoWebMpaBootstrap', { full: true })
-  const cfgStat = getConfig('bajoWebStatic', { full: true })
-  const virts = readJson(`${cfg.dir}/bajoWebStatic/virtuals.json`)
-  const virtsBs = readJson(`${cfgBs.dir}/bajoWebStatic/virtuals.json`)
   return map(items, name => {
     return {
       name,
+      framework: 'bootstrap3',
       description: `Bootswatch 5.3 - ${upperFirst(name)}`,
-      script: `/${cfgStat.prefix}/${cfgStat.virtualsPrefix}/${cfgBs.alias}/${virtsBs[0].prefix}/js/bootstrap.bundle.min.js`,
-      css: `/${cfgStat.prefix}/${cfgStat.virtualsPrefix}/${cfg.alias}/${virts[0].prefix}/${name}/bootstrap.min.css`
+      script: `${virtualsDir('bajoWebMpaBootstrap')}/bs5/js/bootstrap.bundle.min.js`,
+      css: `${virtualsDir('bajoWebMpaBootswatch')}/dist/${name}/bootstrap.min.css`
     }
   })
 }
