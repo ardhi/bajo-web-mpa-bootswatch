@@ -10,10 +10,14 @@ async function themes () {
   return map(items, name => {
     return {
       name,
-      framework: 'bootstrap3',
+      framework: 'bootstrap5',
       description: `Bootswatch 5.3 - ${upperFirst(name)}`,
-      script: `${virtualDir('bajoWebMpaBootstrap')}/bs5/js/bootstrap.bundle.min.js`,
-      css: `${virtualDir('bajoWebMpaBootswatch')}/dist/${name}/bootstrap.min.css`
+      script: `${virtualDir('bajoWebMpa')}/bs5/js/bootstrap.bundle.min.js`,
+      css: [
+        `${virtualDir('bajoWebMpaBootswatch')}/dist/${name}/bootstrap.min.css`,
+        `${virtualDir('bajoWebMpa')}/icons/font/bootstrap-icons.min.css`
+      ],
+      useFramework: ['icon', 'mapping']
     }
   })
 }

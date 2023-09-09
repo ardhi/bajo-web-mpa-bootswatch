@@ -1,4 +1,4 @@
 {
   "alias": "bootswatch",
-  "dependencies": ["bajo-web-mpa", "bajo-web-static", "bajo-web-mpa-bootstrap"]
+  "dependencies": ["bajo-web-mpa", "bajo-web-static"]
 }
