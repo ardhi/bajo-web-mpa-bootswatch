@@ -1,3 +1,5 @@
+import component from './component.js'
+
 const items = ['cerulean', 'cosmo', 'cyborg', 'darkly', 'flatly', 'journal',
   'litera', 'lumen', 'lux', 'materia', 'minty', 'morph', 'pulse', 'quartz',
   'sandstone', 'simplex', 'sketchy', 'slate', 'solar', 'spacelab', 'superhero',
@@ -12,12 +14,12 @@ async function themes () {
       name,
       framework: 'bootstrap5',
       description: `Bootswatch 5.3 - ${upperFirst(name)}`,
-      script: `${virtualDir('bajoWebMpa')}/bs5/js/bootstrap.bundle.min.js`,
       css: [
         `${virtualDir('bajoWebMpaBootswatch')}/dist/${name}/bootstrap.min.css`,
         `${virtualDir('bajoWebMpa')}/icons/font/bootstrap-icons.min.css`
       ],
-      useFramework: ['icon', 'mapping']
+      useFramework: ['script', 'icon', 'mapping'],
+      component
     }
   })
 }
