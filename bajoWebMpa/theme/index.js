@@ -6,9 +6,8 @@ const items = ['cerulean', 'cosmo', 'cyborg', 'darkly', 'flatly', 'journal',
   'united', 'vapor', 'yeti', 'zephyr']
 
 async function themes () {
-  const { importPkg } = this.bajo.helper
   const { virtualDir } = this.bajoWebStatic.helper
-  const { map, upperFirst } = await importPkg('lodash-es')
+  const { map, upperFirst } = this.bajo.helper._
   return map(items, name => {
     return {
       name,
